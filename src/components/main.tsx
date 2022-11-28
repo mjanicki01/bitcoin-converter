@@ -13,24 +13,44 @@
 
 // Consume in app
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
-import { AppCtx } from "../store/store";
+import { AppContext } from "../store/context";
+import CardMain from "./card-main";
 //import { IStoreData } from "./types";
+
+// const FetchData = () => {
+//   // Grab data from useAPI in global context
+//   const { data, isLoading } = useAPI();
+
 
 const Main = () => {
 
-  const appContext = useContext(AppCtx);
+  const useRefreshData = () => {
+    const { getData } = useContext(AppContext);
+   
+    useEffect(() => {
+      getData?.();
+    }, [getData])
+  }
 
-  console.log(appContext?.currencyData[0])
+  const { data } = useContext(AppContext);
+  useRefreshData();
+
+  // const {currencyData, graphData} = useContext(AppContext);
+
+  console.log(data!.currencyData, data!.graphData)
 
   return (
     <>
       <div>
         <h1>"Main component"</h1>
+        {/* <div>{!isLoading ? <p>{data[0].category}</p> : <p>Loading...</p>}</div> */}
       </div>
+      <CardMain topCardData={data!.currencyData}/>
     </>
   );
 };
+
 
 export default Main

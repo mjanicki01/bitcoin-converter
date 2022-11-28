@@ -2,6 +2,19 @@
 // useEffect to change display of values when global state changes
 // if new state value is different from current state value, trigger CSS animation
 
-export const cardTop = () => {
-    return
+import { ICurrencyData } from "../store/types"
+
+
+type CardTopProps = {
+    currencyData: any
 }
+
+const CardTop = ({ currencyData }: CardTopProps) => {
+    return (
+    <div className="card-top">
+        <p>{currencyData}</p>
+    </div>
+    )
+}
+
+export default CardTop

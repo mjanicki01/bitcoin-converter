@@ -1,28 +1,16 @@
 
 import React from "react";
 import Main from "./components/main";
+import useAppContextValue, { AppContext } from './store/context';
 
 
 function App() {
+  // const defaultAppContextValue = useAppContextValue();
+
   return (
-  <>
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-    <Main></Main>
-    </>
+    <AppContext.Provider value={useAppContextValue()}>
+    <Main />
+  </AppContext.Provider>
   );
 }
 
