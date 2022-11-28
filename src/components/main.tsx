@@ -13,10 +13,11 @@
 
 // Consume in app
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
-import { AppContext } from "../store/context";
+import AppContext from "../store/context";
 import CardMain from "./card-main";
+import CardTop from "./card-top";
 //import { IStoreData } from "./types";
 
 // const FetchData = () => {
@@ -28,18 +29,17 @@ const Main = () => {
 
   const useRefreshData = () => {
     const { getData } = useContext(AppContext);
-   
+    
     useEffect(() => {
-      getData?.();
+      typeof getData?.() === 'undefined' ? console.log("getData is undefined") : getData() 
     }, [getData])
   }
 
   const { data } = useContext(AppContext);
+  console.log(data)
   useRefreshData();
 
-  // const {currencyData, graphData} = useContext(AppContext);
 
-  console.log(data!.currencyData, data!.graphData)
 
   return (
     <>
@@ -47,7 +47,8 @@ const Main = () => {
         <h1>"Main component"</h1>
         {/* <div>{!isLoading ? <p>{data[0].category}</p> : <p>Loading...</p>}</div> */}
       </div>
-      <CardMain topCardData={data!.currencyData}/>
+      <CardMain />
+      <CardTop currencyData = {"test"} />
     </>
   );
 };

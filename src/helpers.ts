@@ -6,7 +6,7 @@
 // if test fails, populate result with error message & console log a more detailed message
 
 import { useContext } from "react"
-import { AppContext } from "./store/context"
+import AppContext from "./store/context"
 
 
 export const conversion = () => {
