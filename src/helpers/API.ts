@@ -1,10 +1,11 @@
 import axios from "axios"
+import { BcConversion } from "../store/types";
 
 // get data at intervals of 30seconds
 
-const getCurrencyData = async () => {
+export const getCurrencyData = async () => {
     try {
-        const resp = await axios.get("https://api.coindesk.com/v1/bpi/currentprice.json");
+        const resp: BcConversion = await axios.get("https://api.coindesk.com/v1/bpi/currentprice.json");
         return resp
     } catch(err) {
         console.log(err)

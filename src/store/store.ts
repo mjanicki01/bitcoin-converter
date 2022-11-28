@@ -1,15 +1,19 @@
 import { createContext } from "react";
-import { IStoreData } from "./types";
+import { IStoreData, IRespData, BcConversion } from "./types";
+import { getCurrencyData } from "../helpers/API";
+
+const resp = getCurrencyData()
+const defaultData: IRespData = Object.values(Object.entries(resp)[3][1])[0]
 
 export const AppCtx = createContext<IStoreData | null>(null);
 
 // Provider in app
 
-export const defaultAppContext: IStoreData = {
+export const defaultAppContext = {
     // make API call before default context value is set
     currencyData: [
         {
-            name: "United States Dollar",
+            name: defaultData?.code,
             code: "USD",
             symbol: "&#36;",
             rateToBC: 16512.4342,

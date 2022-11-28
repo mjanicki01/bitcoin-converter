@@ -15,7 +15,7 @@
 
 import React from "react";
 import { useContext } from "react";
-import { AppCtx } from "../store/attempt3";
+import { AppCtx } from "../store/store";
 //import { IStoreData } from "./types";
 
 const Main = () => {

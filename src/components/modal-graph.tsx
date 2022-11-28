@@ -1,5 +1,5 @@
 // prop types:
-// - data array
+// - data array (useEffect to update data) (api call for refreshed data when modal is clicked)
 // - name of currency selected
 // - open: boolean
 
@@ -19,3 +19,8 @@
 //   options:{...}
 // });
 // https://www.w3schools.com/js/js_graphics_chartjs.asp
+
+
+export const modalGraph = () => {
+    return
+}
