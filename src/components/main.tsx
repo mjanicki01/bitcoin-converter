@@ -12,6 +12,7 @@ const Main = () => {
           <div className="header">
             <h1>Bitcoin Price Displayer + Simple Price Calculator</h1>
           </div>
+          <div className="card-container">
           {seedData.map((e, i) => {
             return (<div key={i}>
               {/* @ts-ignore */}
@@ -19,6 +20,7 @@ const Main = () => {
             </div>)
           })
           }
+          </div>
         </div>
       </div>
     </>
