@@ -21,33 +21,22 @@ const Main = () => {
   const [data, setData] = useState<any>();
 
   const firstLoad = async () => {
-      const resp = await mapProperties();
-      setData(JSON.stringify(resp));
-      localStorage.setItem('Data', JSON.stringify(data));
-      setLoading(false);
+    const resp = await mapProperties();
+    setData(JSON.stringify(resp));
+    localStorage.setItem('Data', JSON.stringify(data));
+    setLoading(false);
   };
 
-  const checkLocalStorage = () => {
-    if (!localStorage.getItem('Data')) {
-     setData(data);
-    } else {
-      firstLoad()
-    }
-  }
-
-  checkLocalStorage();
-
-  //firstLoad();
+  firstLoad();
 
   setInterval(async () => {
-      const resp = await mapProperties();
-      setData(JSON.stringify(resp));
+    const resp = await mapProperties();
+    setData(JSON.stringify(resp));
   }, 10000)
 
   useEffect(() => {
-      localStorage.setItem('Data', JSON.stringify(data));
+    localStorage.setItem('Data', JSON.stringify(data));
   }, [data]);
-
 
 
   return (
@@ -57,8 +46,8 @@ const Main = () => {
         {loading ?
           <p>Loading...</p> :
           <div>
-      <CardMain topCardData={data} />
-      </div>
+            <CardMain topCardData={data} />
+          </div>
         }
       </div>
     </>
