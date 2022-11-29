@@ -3,18 +3,12 @@ export interface ICurrencyData {
     code: string;
     symbol: string;
     rateToBC: number;
-    rateToUSD: number;
 }
 
 export interface IGraphData {
+    currency: string;
     xValues: any[];
     yValues: number[];
-}
-
-export interface IStoreData {
-    isLoading?: boolean;
-    getData?: () => any;
-    data?: IStoreDataModules;
 }
 
 export interface IStoreDataModules {

@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react"
-import { mapProperties } from "../helpers"
 import CardBottom from "./card-bottom"
 import CardTop from "./card-top"
+import "../styles/card.css"
+
 
 type CardMainProps = {
     topCardData?: any,

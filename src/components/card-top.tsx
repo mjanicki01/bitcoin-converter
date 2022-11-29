@@ -1,7 +1,7 @@
 // top contains currency symbol & BC -> Currency value display
 
-import { useEffect } from "react";
-import { ICurrencyData } from "../types"
+import { useEffect, useState } from "react";
+import { mapProperties } from "../helpers";
 
 
 type CardTopProps = {
@@ -10,9 +10,31 @@ type CardTopProps = {
 
 const CardTop = ({ currencyData }: CardTopProps) => {
 
+    const [data, setData] = useState<any>();
+    const [loading, setLoading] = useState(true);
+
+    const firstLoad = async () => {
+      const resp = await mapProperties();
+      setData(JSON.stringify(resp));
+      localStorage.setItem('Data', JSON.stringify(data));
+      setLoading(false);
+    };
+  
+    firstLoad();
+  
+    setInterval(async () => {
+      const resp = await mapProperties();
+      setData(JSON.stringify(resp));
+    }, 10000)
+  
+    useEffect(() => {
+      localStorage.setItem('Data', JSON.stringify(data));
+    }, [data]);
+
+
     return (
     <div className="card-top">
-        {currencyData}
+        {data}
     </div>
     )
 }

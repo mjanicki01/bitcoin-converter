@@ -8,7 +8,7 @@ type CardBottomProps = {
 const CardBottom = ({ test }: CardBottomProps) => {
     return (
     <div className="card-bottom">
-        <p>{test}</p>
+        <div>"test"</div>
     </div>
     )
 }

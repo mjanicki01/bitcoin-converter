@@ -9,46 +9,28 @@
 // include timestamp for last GET request in bottom right hand corner of screen
 // include disclaimer from JSON response somewhere (?)
 
-
-import { useEffect, useState } from "react";
-import { mapProperties } from "../helpers";
 import CardMain from "./card-main";
+import "../styles/card.css"
 
 
 const Main = () => {
 
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState<any>();
-
-  const firstLoad = async () => {
-    const resp = await mapProperties();
-    setData(JSON.stringify(resp));
-    localStorage.setItem('Data', JSON.stringify(data));
-    setLoading(false);
-  };
-
-  firstLoad();
-
-  setInterval(async () => {
-    const resp = await mapProperties();
-    setData(JSON.stringify(resp));
-  }, 10000)
-
-  useEffect(() => {
-    localStorage.setItem('Data', JSON.stringify(data));
-  }, [data]);
 
 
   return (
     <>
-      <div>
-        <h1>"Main component"</h1>
-        {loading ?
-          <p>Loading...</p> :
-          <div>
-            <CardMain topCardData={data} />
-          </div>
+      <div className="main">
+        <div>
+        <h1>Bitcoin Price Displayer + Simple Price Calculator</h1>
+        </div>
+        <div className="content">
+          {[1, 2, 3].map((e) => {
+           return (<div>
+            <CardMain topCardData={"data"} />
+          </div>)
+        })
         }
+        </div>
       </div>
     </>
   );
