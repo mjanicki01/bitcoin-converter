@@ -1,14 +1,18 @@
-// bottom contains the input field & USD -> BC output display
-// import USD -> BC conversion helper
+
 
 type CardBottomProps = {
-    test: string
+    currency: string;
+    rate: number;
 }
 
-const CardBottom = ({ test }: CardBottomProps) => {
+const CardBottom = ({ currency, rate }: CardBottomProps) => {
+
     return (
     <div className="card-bottom">
         <div>"test"</div>
+        <form>
+            <input type="text" id="input" name={currency}></input>
+        </form>
     </div>
     )
 }

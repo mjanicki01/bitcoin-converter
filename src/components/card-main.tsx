@@ -1,19 +1,20 @@
 import CardBottom from "./card-bottom"
 import CardTop from "./card-top"
 import "../styles/card.css"
+import { Currencies } from "../helpers"
 
 
 type CardMainProps = {
-    topCardData?: any,
+    currency: Currencies,
     bottomCardData?: any
 }
 
-const CardMain = ({ topCardData, bottomCardData }: CardMainProps) => {
+const CardMain = ({ currency, bottomCardData }: CardMainProps) => {
 
     return (
         <div className="card-main">
-            <CardTop currencyData={topCardData} />
-            <CardBottom test={"test"} />
+            <CardTop currency={currency}/>
+            <CardBottom rate={123} currency={currency} />
         </div>
     )
 }

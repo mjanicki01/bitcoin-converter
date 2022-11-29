@@ -72,3 +72,14 @@ export const mapProperties = async () => {
         return finalDataFormat
     }
 };
+
+export type Currencies = 'usd' | 'eur' | 'gbp'
+
+export const getTempData = async (currency: Currencies, qty: number) => {
+    try {
+        const response = await axios.get(`https://bcserver2.herokuapp.com/history/${currency}/${qty}`)
+        return response.data
+    } catch (err) {
+        console.log(err)
+    } 
+}
