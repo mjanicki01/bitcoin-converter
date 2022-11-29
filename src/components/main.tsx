@@ -1,22 +1,21 @@
 import CardMain from "./card-main";
 import "../styles/card.css"
+import { seedData } from "../seed";
 
 
 const Main = () => {
 
-  const returnedCurrencyPlaceholder = ["usd", "gbp", "eur"]
-
   return (
     <>
       <div className="main">
-        <div>
-          <h1>Bitcoin Price Displayer + Simple Price Calculator</h1>
-        </div>
         <div className="content">
-          {returnedCurrencyPlaceholder.map((e) => {
-            return (<div key={e}>
+          <div className="header">
+            <h1>Bitcoin Price Displayer + Simple Price Calculator</h1>
+          </div>
+          {seedData.map((e, i) => {
+            return (<div key={i}>
               {/* @ts-ignore */}
-              <CardMain currency={e}/>
+              <CardMain currency={e} />
             </div>)
           })
           }

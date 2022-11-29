@@ -1,3 +1,5 @@
+// keep for re-attempting state
+
 export interface ICurrencyData {
     currname: string;
     code: string;

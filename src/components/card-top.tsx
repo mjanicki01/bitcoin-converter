@@ -1,49 +1,22 @@
-// top contains currency symbol & BC -> Currency value display
-
-import { useEffect, useState } from "react";
-import { Currencies, getTempData, mapProperties } from "../helpers";
-
 
 type CardTopProps = {
-    currency: Currencies;
+    currency: any;
 }
 
 const CardTop = ({ currency }: CardTopProps) => {
 
-    const [data, setData] = useState<any>();
-    const [loading, setLoading] = useState(true);
-
-    const firstLoad = async () => {
-
-    //   const resp = await mapProperties();
+    // setInterval(() => {
+    //     // Math.random() * rate
+    //   const resp = getTempData(currency, 1);
     //   setData(JSON.stringify(resp));
-    //   localStorage.setItem('Data', JSON.stringify(data));
-
-      const resp = await getTempData(currency, 1);
-      setData(JSON.stringify(resp));
-      setLoading(false);
-    };
-  
-    firstLoad();
-  
-    setInterval(async () => {
-
-    //   const resp = await mapProperties();
-    //   setData(JSON.stringify(resp));
-
-      const resp = await getTempData(currency, 1);
-      setData(JSON.stringify(resp));
-    }, 10000)
-  
-    // useEffect(() => {
-    //   localStorage.setItem('Data', JSON.stringify(data));
-    // }, [data]);
+    // }, 10000)
 
 
     return (
-    <div className="card-top">
-        <span>{data}</span>
-    </div>
+        <div className="card-top">
+            <span><h4>{currency.description}</h4></span>
+            <span><h2>{currency.rate_float}</h2><h4>{currency.symbol}</h4></span>
+        </div>
     )
 }
 

@@ -1,6 +1,11 @@
 import axios from "axios"
 
 
+const CURRENTPRICE_API = "https://api.coindesk.com/v1/bpi/currentprice.json";
+const TEMP_API = "https://bcserver2.herokuapp.com/history";
+
+
+
 const convertRateToUSD = (currencyRate: number, usdRate: number, qty: number) => {
     let rate = currencyRate / usdRate;
     return rate * qty
@@ -55,7 +60,7 @@ export const mapArraysToStoreObject = (currData: any, graphData: any) => {
 
 export const getResp = async () => {
     try {
-        const response = await axios.get("https://api.coindesk.com/v1/bpi/currentprice.json")
+        const response = await axios.get(CURRENTPRICE_API)
         return response.data
     } catch (err) {
         console.log(err)
@@ -77,7 +82,7 @@ export type Currencies = 'usd' | 'eur' | 'gbp'
 
 export const getTempData = async (currency: Currencies, qty: number) => {
     try {
-        const response = await axios.get(`https://bcserver2.herokuapp.com/history/${currency}/${qty}`)
+        const response = await axios.get(`${TEMP_API}/${currency}/${qty}`)
         return response.data
     } catch (err) {
         console.log(err)

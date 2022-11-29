@@ -1,45 +1,66 @@
 body {
     font-family: Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-items: center;
 }
 
 /* .main {
-    background-color: aqua;
+    display: flex;
+    justify-items: center;
 } */
 
-.content {
-    margin: auto;
-    grid-template-columns: auto auto auto;
-    gap: 10px;
-    margin: 10%;
+@media only screen and (min-width: 900px) {
+    .content {
+        display: grid;
+        justify-items: center;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: 
+            "header header header"
+            "card-main card-main card-main";
+        gap: 10px;
+        margin: auto;
+        padding: 5%
+    }
 }
 
-h1 {
-    padding: 1rem 2rem 0px 2rem;
+.header {
+    grid-area: header;
+}
+
+h1, h3 {
+    display: block;
+    padding: 1rem 5% 0px 5%;
     text-align: center;
+    width: 100VW;
+    column-span: all;
 }
 
-h4 {
+h4, h2 {
     color: white;
     text-align: center;
 }
 
 .card-main {
+    grid-area: card-main;
+    justify-self: center;
     background-color: white;
     border-radius: 4px;
     box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px;
     padding: 2rem;
-    margin: 0rem 1rem 2rem 2rem;
+    width: 300px;
 }
 
 .card-top {
-    display: block;
+    display: flex;
+    flex-direction: column;
     color: white;
     background-color: darkgreen;
     padding: 2rem;
     font-weight: 600;
     letter-spacing: 0.1rem;
     border-radius: 4px 4px 0px 0px;
-    
+
 }
 
 .card-bottom {
@@ -50,4 +71,22 @@ h4 {
     letter-spacing: 0.1rem;
     border-radius: 0px 0px 4px 4px;
     border: 2px solid darkgreen;
+}
+
+
+@media only screen and (max-width: 899px) {
+    .content {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .card-main {
+        width: 80vw;
+        min-width: 270px;
+        margin: 5%
+    }
+
+    .h1 {
+        font-size: 24px;
+    }
 }

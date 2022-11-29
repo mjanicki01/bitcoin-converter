@@ -9,7 +9,7 @@ const CardBottom = ({ currency, rate }: CardBottomProps) => {
 
     return (
     <div className="card-bottom">
-        <div>"test"</div>
+        <div>USD</div>
         <form>
             <input type="text" id="input" name={currency}></input>
         </form>
