@@ -13,8 +13,6 @@ const CardTop = ({ currency }: CardTopProps) => {
     const [data, setData] = useState<any>();
     const [loading, setLoading] = useState(true);
 
-    const [description, setDescription] = useState<string>();
-
     const firstLoad = async () => {
 
     //   const resp = await mapProperties();
@@ -22,8 +20,7 @@ const CardTop = ({ currency }: CardTopProps) => {
     //   localStorage.setItem('Data', JSON.stringify(data));
 
       const resp = await getTempData(currency, 1);
-      setData(JSON.stringify(resp[0]));
-      setDescription(data.description)
+      setData(JSON.stringify(resp));
       setLoading(false);
     };
   
@@ -35,8 +32,7 @@ const CardTop = ({ currency }: CardTopProps) => {
     //   setData(JSON.stringify(resp));
 
       const resp = await getTempData(currency, 1);
-      setData(JSON.stringify(resp[0]));
-      setDescription(data.description)
+      setData(JSON.stringify(resp));
     }, 10000)
   
     // useEffect(() => {
@@ -46,7 +42,7 @@ const CardTop = ({ currency }: CardTopProps) => {
 
     return (
     <div className="card-top">
-        <span>{description}</span>
+        <span>{data}</span>
     </div>
     )
 }
