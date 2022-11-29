@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react"
+import { mapProperties } from "../helpers"
 import CardBottom from "./card-bottom"
 import CardTop from "./card-top"
 
@@ -6,12 +8,13 @@ type CardMainProps = {
     bottomCardData?: any
 }
 
-const CardMain = ({topCardData, bottomCardData}: CardMainProps) => {
+const CardMain = ({ topCardData, bottomCardData }: CardMainProps) => {
+
     return (
-    <div className="card-main">
-        <CardTop currencyData={topCardData} />
-        <CardBottom test={"test"} />
-    </div>
+        <div className="card-main">
+            <CardTop currencyData={topCardData} />
+            <CardBottom test={"test"} />
+        </div>
     )
 }
 

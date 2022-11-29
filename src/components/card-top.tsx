@@ -1,10 +1,7 @@
 // top contains currency symbol & BC -> Currency value display
-// useEffect to change display of values when global state changes
-// if new state value is different from current state value, trigger CSS animation
 
-import { useContext, useEffect } from "react";
-import { ICurrencyData } from "../store/types"
-
+import { useEffect } from "react";
+import { ICurrencyData } from "../types"
 
 
 type CardTopProps = {
@@ -13,8 +10,6 @@ type CardTopProps = {
 
 const CardTop = ({ currencyData }: CardTopProps) => {
 
-
-      
     return (
     <div className="card-top">
         {currencyData}

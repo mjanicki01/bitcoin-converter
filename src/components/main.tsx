@@ -10,34 +10,43 @@
 // include disclaimer from JSON response somewhere (?)
 
 
-
-// Consume in app
-
-import React, { useEffect, useState } from "react";
-import { useContext } from "react";
-import AppContext from "../store/context";
+import { useEffect, useState } from "react";
+import { mapProperties } from "../helpers";
 import CardMain from "./card-main";
-import CardTop from "./card-top";
-//import { IStoreData } from "./types";
-
-// const FetchData = () => {
-//   // Grab data from useAPI in global context
-//   const { data, isLoading } = useAPI();
 
 
 const Main = () => {
 
-  const useRefreshData = () => {
-    const { getData } = useContext(AppContext);
-    
-    useEffect(() => {
-      typeof getData?.() === 'undefined' ? console.log("getData is undefined") : getData() 
-    }, [getData])
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<any>();
+
+  const firstLoad = async () => {
+      const resp = await mapProperties();
+      setData(JSON.stringify(resp));
+      localStorage.setItem('Data', JSON.stringify(data));
+      setLoading(false);
+  };
+
+  const checkLocalStorage = () => {
+    if (!localStorage.getItem('Data')) {
+     setData(data);
+    } else {
+      firstLoad()
+    }
   }
 
-  const { data } = useContext(AppContext);
-  console.log(data)
-  useRefreshData();
+  checkLocalStorage();
+
+  //firstLoad();
+
+  setInterval(async () => {
+      const resp = await mapProperties();
+      setData(JSON.stringify(resp));
+  }, 10000)
+
+  useEffect(() => {
+      localStorage.setItem('Data', JSON.stringify(data));
+  }, [data]);
 
 
 
@@ -45,10 +54,13 @@ const Main = () => {
     <>
       <div>
         <h1>"Main component"</h1>
-        {/* <div>{!isLoading ? <p>{data[0].category}</p> : <p>Loading...</p>}</div> */}
+        {loading ?
+          <p>Loading...</p> :
+          <div>
+      <CardMain topCardData={data} />
       </div>
-      <CardMain />
-      <CardTop currencyData = {"test"} />
+        }
+      </div>
     </>
   );
 };
