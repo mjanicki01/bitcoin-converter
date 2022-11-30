@@ -51,6 +51,16 @@ h4, h3, h2 {
     text-align: center;
 }
 
+.modal-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: red;
+    width: 300px;
+    height: 300px;
+}
+
 .card-main {
     grid-area: card-main;
     background-color: white;
@@ -61,7 +71,6 @@ h4, h3, h2 {
 
 .card-main:hover {
     box-shadow:rgb(0 0 0 / 20%) 0px 2px 4px -1px, rgb(0 0 0 / 14%) 0px 4px 5px 0px, rgb(0 0 0 / 12%) 0px 1px 10px 0px;
-    cursor: pointer;
 }
 
 .card-top {
@@ -73,6 +82,10 @@ h4, h3, h2 {
     font-weight: 600;
     letter-spacing: 0.1rem;
     border-radius: 4px 4px 0px 0px;
+}
+
+.card-top:hover {
+    cursor: pointer;
 }
 
 #currency-rate-display {
