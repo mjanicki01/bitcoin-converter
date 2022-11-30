@@ -10,15 +10,15 @@ type ModalGraphProps = {
 }
 
 const ModalGraph = ({ currency, isShowing, hide }: ModalGraphProps) => isShowing ? ReactDOM.createPortal(
-    
+
     <Fragment>
         <div className="modal-page-effect">
             <div className="modal-content">
+                <button type="button" className="modal-close-button" onClick={hide}>
+                    &times;
+                </button>
+                <h2 id="graph-header">{currency.description}
 
-                <h2>{currency.description}
-                    <button type="button" className="modal-close-button" onClick={hide}>
-                        &times;
-                    </button>
                 </h2>
 
                 <div className="graph-container">
