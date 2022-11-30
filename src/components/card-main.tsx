@@ -1,6 +1,5 @@
 import CardBottom from "./card-bottom"
 import CardTop from "./card-top"
-import "../styles/card.css"
 
 
 type CardMainProps = {

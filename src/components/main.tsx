@@ -1,5 +1,4 @@
 import CardMain from "./card-main";
-import "../styles/card.css"
 import { seedData } from "../seed";
 
 

@@ -1,23 +1,32 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { useContext } from "react";
+import { Fragment } from "react";
 import ReactDOM from "react-dom";
-
+import Graph from "./graph";
 
 // rate={currency.rate_float} description={currency.description}
 type ModalGraphProps = {
     currency: any;
     isShowing: any;
     hide: any;
-    text: string;
 }
 
-const ModalGraph = ({ currency, isShowing, hide, text }: ModalGraphProps) => isShowing? ReactDOM.createPortal(
+const ModalGraph = ({ currency, isShowing, hide }: ModalGraphProps) => isShowing ? ReactDOM.createPortal(
+    
     <Fragment>
-        <div className="modal-content">
-        <button type="button" className="modal-close-button" onClick={hide}>
-            <span>&times;</span>
-          </button>
-            <p>{text}</p>
+        <div className="modal-page-effect">
+            <div className="modal-content">
+
+                <h2>{currency.description}
+                    <button type="button" className="modal-close-button" onClick={hide}>
+                        &times;
+                    </button>
+                </h2>
+
+                <div className="graph-container">
+                    <div className="graph">
+                        <Graph />
+                    </div>
+                </div>
+            </div>
         </div>
     </Fragment>, document.body
 ) : null;

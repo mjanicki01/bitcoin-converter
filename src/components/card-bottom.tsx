@@ -20,8 +20,6 @@ const CardBottom = ({ currency, rate }: CardBottomProps) => {
         console.log(qty)
     }
 
-    //add useState & useEffect to change disabled prop
-
 
     return (
         <div className="card-bottom">
@@ -30,7 +28,7 @@ const CardBottom = ({ currency, rate }: CardBottomProps) => {
                 <form onSubmit={handleSubmit}>
                     <label>
                         Convert to Bitcoin:
-                        <input id="qty" type="text" value={qty} onChange={handleChange} placeholder="USD" disabled={false}/>
+                        <input id="qty" type="text" value={qty} onChange={handleChange} placeholder="USD" disabled={false} />
                     </label>
                     <input type="submit" value="Convert" />
                 </form>

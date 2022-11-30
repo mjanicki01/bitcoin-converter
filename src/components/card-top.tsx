@@ -1,4 +1,4 @@
-import useModal from "../useModal";
+import useModal from "../helpers/useModal";
 import ModalGraph from "./modal-graph";
 
 type CardTopProps = {
@@ -6,6 +6,7 @@ type CardTopProps = {
 }
 
 const CardTop = ({ currency }: CardTopProps) => {
+
     const { isShowing, toggle } = useModal();
 
     const converter = Intl.NumberFormat('en', { maximumFractionDigits: 2 });
@@ -24,7 +25,7 @@ const CardTop = ({ currency }: CardTopProps) => {
     return (
         <>
             <div className="modal-main">
-                <ModalGraph currency={currency} isShowing={isShowing} hide={toggle} text={currency.description} />
+                <ModalGraph currency={currency} isShowing={isShowing} hide={toggle} />
             </div>
 
             <div className="card-top" onClick={toggle}>
