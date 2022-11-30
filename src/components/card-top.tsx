@@ -5,17 +5,22 @@ type CardTopProps = {
 
 const CardTop = ({ currency }: CardTopProps) => {
 
+    const converter = Intl.NumberFormat('en', { maximumFractionDigits: 2});
     // setInterval(() => {
     //     // Math.random() * rate
     //   const resp = getTempData(currency, 1);
     //   setData(JSON.stringify(resp));
     // }, 10000)
 
+    const formatRate = (rate: number) => {
+        return converter.format(rate)
+    }
+
 
     return (
         <div className="card-top">
-            <span><h4>{currency.description}</h4></span>
-            <span><h2>{currency.rate_float}</h2><h4>{currency.symbol}</h4></span>
+            <h4>{currency.description}</h4>
+            <span id="currency-rate-display">{formatRate(currency.rate_float)} {currency.symbol}</span>
         </div>
     )
 }

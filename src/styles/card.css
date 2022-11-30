@@ -18,7 +18,7 @@ body {
             "header"
             "card-container";
         margin: auto;
-        padding-top: 5%
+        padding-top: 2%
     } 
     .card-container {
         display: grid;
@@ -38,16 +38,15 @@ body {
     margin-bottom: 2%;
 }
 
-h1, h3 {
+h1 {
     font-family: 'Lato', sans-serif;
     color: rgb(1, 28, 1);
     display: block;
     padding: 1rem 5% 0px 5%;
     text-align: center;
-    column-span: all;
 }
 
-h4, h2 {
+h4, h3, h2 {
     color: white;
     text-align: center;
 }
@@ -61,7 +60,8 @@ h4, h2 {
 }
 
 .card-main:hover {
-    box-shadow:rgb(0 0 0 / 20%) 0px 2px 4px -1px, rgb(0 0 0 / 14%) 0px 4px 5px 0px, rgb(0 0 0 / 12%) 0px 1px 10px 0px;;
+    box-shadow:rgb(0 0 0 / 20%) 0px 2px 4px -1px, rgb(0 0 0 / 14%) 0px 4px 5px 0px, rgb(0 0 0 / 12%) 0px 1px 10px 0px;
+    cursor: pointer;
 }
 
 .card-top {
@@ -69,21 +69,30 @@ h4, h2 {
     flex-direction: column;
     color: white;
     background-color: darkgreen;
-    padding: 2rem;
+    padding: 1rem 2rem 2rem 2rem;
     font-weight: 600;
     letter-spacing: 0.1rem;
     border-radius: 4px 4px 0px 0px;
+}
 
+#currency-rate-display {
+    font-size: 24px;
+    color: white;
+    text-align: center;
 }
 
 .card-bottom {
     display: block;
     color: darkgreen;
-    padding: 2rem;
+    padding: 2rem 2rem 1rem 2rem;
     font-weight: 600;
-    letter-spacing: 0.1rem;
     border-radius: 0px 0px 4px 4px;
     border: 2px solid darkgreen;
+}
+
+.input-section {
+    text-align-last: justify;
+
 }
 
 input {
@@ -105,35 +114,43 @@ input:focus {
 }
 
 input[type=submit] {
+    font-size: 14px;
     background: none;
     border: none;
     color: green;
-    text-decoration: underline;
-    cursor: pointer; 
+    cursor: pointer;
+    padding: 0px 0px 10px 0px; 
 }
 
 input[type=submit]:hover, input[type=submit]:active {
-    padding: 10px;
-    font-weight: 600;
-    border: 1px solid darkgreen;
-    border-radius: 4px;
-    color: white;
-    width: 80px;
-    cursor: pointer;
-    background-color:rgb(1, 28, 1);
-    box-shadow: rgb(0 0 0 / 20%) 0px 3px 3px -2px, rgb(0 0 0 / 14%) 0px 3px 4px 0px, rgb(0 0 0 / 12%) 0px 1px 8px 0px;
+    text-decoration: underline;
 }
 
+#converted-value-section {
+    margin: 1rem 0 1rem 0;
+    padding: 1rem 0 1rem 0;
+    font-size: 18px;
+    border-radius: 4px;
+    background-color: rgb(248, 248, 248);
+    justify-self: center;
+    text-align: center;
+}
 
 @media only screen and (max-width: 899px) {
     .content {
         grid-template-columns: 1fr;
+        margin: 0 5% 0 5%;
+
+    }
+
+    .card-container {
+        margin: 0 5% 0 5%;
     }
 
     .card-main {
-        width: 80vw;
+        width: 80%;
         min-width: 270px;
-        margin: auto auto 2% auto;
+        margin: auto auto 7% auto;
     }
 
     .h1 {
