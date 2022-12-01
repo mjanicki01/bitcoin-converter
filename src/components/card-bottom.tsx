@@ -10,7 +10,7 @@ type CardBottomProps = {
 
 const CardBottom = ({ currency, rate }: CardBottomProps) => {
 
-    const [qty, setQty] = useState(undefined);
+    const [qty, setQty] = useState(0);
     const [returnValue, setReturnValue] = useState("BTC");
 
     const handleChange = (e: any) => {
@@ -18,10 +18,11 @@ const CardBottom = ({ currency, rate }: CardBottomProps) => {
     }
 
     const handleSubmit = (e: any) => {
-        if (qty !== undefined) {
+        if (!isNaN(qty)) {
             e.preventDefault();
-            setReturnValue(convertRateToUSD(currency.rate_float, 16501, qty))
+            setReturnValue(convertRateToUSD(currency.rate_float, qty))
         } else {
+            e.preventDefault();
             setReturnValue("Please enter a valid input")
         }
     }
