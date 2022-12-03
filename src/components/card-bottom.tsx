@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { convertRateToUSD } from "../helpers/helpers";
-import useModal from "../helpers/useModal";
+import { ValueContext } from "../App"
 
 
 type CardBottomProps = {
@@ -13,6 +13,19 @@ const CardBottom = ({ currency, rate }: CardBottomProps) => {
     const [qty, setQty] = useState(0);
     const [returnValue, setReturnValue] = useState("BTC");
 
+    const { state } = useContext(ValueContext);
+
+    const getCurrency = (currency: string) => {
+        switch(currency) {
+            case "USD": return state.usdRate
+            case "EUR": return state.eurRate
+            case "GBP": return state.gbpRate
+            default: return 0
+        }
+    }
+
+    const currentCurrency = getCurrency(currency.code)
+
     const handleChange = (e: any) => {
         setQty(e.target.value);
     }
@@ -20,7 +33,7 @@ const CardBottom = ({ currency, rate }: CardBottomProps) => {
     const handleSubmit = (e: any) => {
         if (!isNaN(qty)) {
             e.preventDefault();
-            setReturnValue(convertRateToUSD(currency.rate_float, qty))
+            setReturnValue(convertRateToUSD(currentCurrency, qty))
         } else {
             e.preventDefault();
             setReturnValue("Please enter a valid input")
@@ -37,7 +50,7 @@ const CardBottom = ({ currency, rate }: CardBottomProps) => {
                     <form onSubmit={handleSubmit}>
                         <label>
                             Convert to Bitcoin:
-                            <input id="qty" type="text" value={qty} onChange={handleChange} placeholder="USD" disabled={false} />
+                            <input id="qty" type="text" value={qty} onChange={handleChange} placeholder={currency.code} disabled={false} />
                         </label>
                         <input type="submit" value="Convert" />
                     </form>

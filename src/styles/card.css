@@ -55,6 +55,7 @@
     text-align: center;
 }
 
+/* desktop */
 @media only screen and (min-width: 900px) {
     .card-container {
         display: grid;
@@ -69,6 +70,7 @@
     }
 }
 
+/* mobile */
 @media only screen and (max-width: 899px) {
     .card-container {
         margin: 0 5% 0 5%;
