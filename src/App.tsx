@@ -1,51 +1,50 @@
 import Main from "./components/main";
-import { useState, createContext, Dispatch, SetStateAction, PropsWithChildren } from 'react';
-import { seedData } from "./seed";
+import { createContext, PropsWithChildren, useState } from "react";
 
-
-export interface IDefaultValues {
-  usdRate: Number,
-  eurRate: Number,
-  gbpRate: Number,
+export interface IDefaultValue {
+  code: string;
+  symbol: string;
+  description: string;
+  rate_float: number;
 }
 
-export const defaultValues = {
-  usdRate: seedData[0].rate_float,
-  eurRate: seedData[1].rate_float,
-  gbpRate: seedData[2].rate_float,
-}
+export const defaultValues: IDefaultValue[] = [
+  {
+    code: "USD",
+    symbol: "$",
+    description: "United States Dollar",
+    rate_float: 16501.6965,
+  },
+  {
+    code: "GBP",
+    symbol: "£",
+    description: "British Pound Sterling",
+    rate_float: 13788.6856,
+  },
+  {
+    code: "EUR",
+    symbol: "€",
+    description: "Euro",
+    rate_float: 16075.0617,
+  },
+];
 
-export function createCtx<IDefaultValues>(defaultValue: IDefaultValues) {
-  type UpdateType = Dispatch<SetStateAction<typeof defaultValue>>;
-  const defaultUpdate: UpdateType = () => defaultValue;
-  const ctx = createContext({
-    state: defaultValue,
-    update: defaultUpdate,
-  });
+export const rateContext = createContext({
+  state: defaultValues,
+  setState: (values: IDefaultValue[]) => {},
+});
 
-  function Provider(props: PropsWithChildren<{}>) {
-    const [state, update] = useState(defaultValue);
-    return <ctx.Provider value={{ state, update }} {...props} />;
-  }
-  return [ctx, Provider] as const;
+export const RateProvider = (props: PropsWithChildren<{}>) => {
+  const [state, setState] = useState(defaultValues);
+  return <rateContext.Provider value={{ state, setState }} />;
 };
 
-const [ctx, ValueProvider] = createCtx(defaultValues)
-export const ValueContext = ctx;
-
-
 function App() {
-
   return (
-    <ValueProvider>
+    <RateProvider>
       <Main />
-    </ValueProvider>
+    </RateProvider>
   );
 }
 
 export default App;
-
-
-
-
-

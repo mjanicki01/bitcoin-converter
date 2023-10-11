@@ -1,10 +1,11 @@
 import { Fragment } from "react";
 import ReactDOM from "react-dom";
 import Graph from "./graph";
+import { IDefaultValue } from "../App";
 
 // rate={currency.rate_float} description={currency.description}
 type ModalGraphProps = {
-    currency: any;
+    currency: IDefaultValue;
     isShowing: any;
     hide: any;
 }
